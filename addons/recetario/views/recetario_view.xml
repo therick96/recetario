@@ -2,6 +2,7 @@
 <odoo>
 <data>
 
+<!--Vista de Busquedas-->
     <record model="ir.ui.view" id="busqueda_form_view">
         <field name="name">recetario.busqueda.form</field>
         <field name="model">recetario.busqueda</field>
@@ -23,7 +24,7 @@
         view_mode="form" 
     />
 
-
+<!--Vista de Recetas-->
     <record model="ir.ui.view" id="recetario_recetas_view_form">
         <field name="name">recetario.receta.form</field>
         <field name="model">recetario.receta</field>
@@ -40,17 +41,14 @@
                             <field name="autor_ids" widget="many2many_tags"/>
                         </group>
                         <newline/>
-                        <group name="ingredientes" col="4">
-                            <group string="Ingredientes">
-                                <field name="ingredientes_ids" nolabel="1"/>
-                                <newline/>
-                                <separator string="Utencilios" />
-                                <newline/>
-                                <field name="utencilios_ids" nolabel="1"/>
-                            </group>
-                            <group>
-                                <field name="imagen" widget="image" nolabel="1" colspan="2" rowspan="3" width="200"/>
-                            </group>
+                        <group name="ingredientes" colspan="2">
+                            <field name="imagen" widget="image" rowspan="3" nolabel="1" width="300"/>
+                        </group>
+                        <group string="Ingredientes" colspan="2">
+                            <field name="ingredientes_ids" nolabel="1" colspan="2"/>
+                            <separator string="Utencilios" colspan="2"/>
+                            <newline/>
+                            <field name="utencilios_ids" nolabel="1" colspan="2"/>
                         </group>
                         <group string="Preparacion" colspan="4">
                             <field name="preparacion" nolabel="1"/>
@@ -58,6 +56,17 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="recetario_receta_tree_view">
+        <field name="name">recetario.receta.tree</field>
+        <field name="model">recetario.receta</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tipo_ids"/>
+            </tree>
         </field>
     </record>
     <act_window 
@@ -68,6 +77,47 @@
     />
 
 
+<!--Vista de Autores-->
+    <record model="ir.ui.view" id="recetario_autor_view_form">
+        <field name="name">recetario.autor.form</field>
+        <field name="model">recetario.autor</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <field name="name" nolabel="1" colspan="4"/>
+                    </div>
+
+                    <group col="4" colspan="2">
+                        <field name="gender"/>
+                        <field name="nacionalidad_id"/>
+                        <field name="especialidad"/>
+                        <separator string="Recetas de este autor" colspan="4" />
+                        <field name="recetas_ids" nolabel="1" colspan="4" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="recetario_autor_tree_view">
+        <field name="name">recetario.autor.tree</field>
+        <field name="model">recetario.autor</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="especialidad"/>
+            </tree>
+        </field>
+    </record>
+    <act_window 
+        name="Autores" 
+        id="action_autor" 
+        res_model="recetario.autor"
+        view_mode="tree,form" 
+    />
     <!--record model="ir.ui.view" id="partner_tree_view_inherit">
         <field name="name">partner.tree.inherit</field>
         <field name="model">res.partner</field>
@@ -95,6 +145,7 @@
     <menuitem name="Recetario" id="menu_recetario"/>
     <menuitem name="Buscar Recetas" id="menu_busqueda" action="action_busqueda" parent="menu_recetario"/>
     <menuitem name="Recetas" id="menu_recetas" action="action_receta" parent="menu_recetario"/>
+    <menuitem name="Autores" id="menu_autor" action="action_autor" parent="menu_recetario"/>
 
         
 </data>
