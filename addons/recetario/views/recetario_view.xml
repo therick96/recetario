@@ -192,6 +192,76 @@
         res_model="recetario.ingredientes"
         view_mode="tree,form" 
     />
+
+<!--Vista de Utencilios-->
+    <record model="ir.ui.view" id="recetario_utencilios_view_form">
+        <field name="name">recetario.utencilios.form</field>
+        <field name="model">recetario.utencilios</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tipo"/>
+                        <field name="uso" colspan="4"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="recetario_utencilios_tree_view">
+        <field name="name">recetario.utencilios.tree</field>
+        <field name="model">recetario.utencilios</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tipo"/>
+            </tree>
+        </field>
+    </record>
+    <act_window 
+        name="Utencilios" 
+        id="action_utencilios" 
+        res_model="recetario.utencilios"
+        view_mode="tree,form" 
+    />
+
+<!--Vista de Medidas de Unidad-->
+    <record model="ir.ui.view" id="recetario_ingredientes_unidad_view_form">
+        <field name="name">recetario.ingredientes.unidad.form</field>
+        <field name="model">recetario.ingredientes.unidad</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="medida"/>
+                        <field name="categoria"/>
+                        <field name="descripcion" colspan="4"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="recetario_ingredientes_unidad_tree_view">
+        <field name="name">recetario.ingredientes.unidad.tree</field>
+        <field name="model">recetario.ingredientes.unidad</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="medida"/>
+                <field name="categoria"/>
+            </tree>
+        </field>
+    </record>
+    <act_window 
+        name="Unidad de Medidas" 
+        id="action_ingredientes_unidad" 
+        res_model="recetario.ingredientes.unidad"
+        view_mode="tree,form" 
+    />
     <!--record model="ir.ui.view" id="partner_tree_view_inherit">
         <field name="name">partner.tree.inherit</field>
         <field name="model">res.partner</field>
@@ -221,7 +291,10 @@
     <menuitem name="Recetas" id="menu_recetas" action="action_receta" parent="menu_recetario"/>
     <menuitem name="Tipos de Comida" id="menu_tipo_comida" action="action_tipo_comida" parent="menu_recetario"/>
     <menuitem name="Autores" id="menu_autor" action="action_autor" parent="menu_recetario"/>
-    <menuitem name="Ingredientes" id="menu_ingredientes" action="action_ingredientes" parent="menu_recetario"/>
+    <menuitem name="Configuracion" id="menu_configuracion" parent="menu_recetario"/>
+        <menuitem name="Ingredientes" id="menu_ingredientes" action="action_ingredientes" parent="menu_configuracion"/>
+        <menuitem name="Utencilios" id="menu_utencilios" action="action_utencilios" parent="menu_configuracion"/>
+        <menuitem name="Unidad de Medidas" id="menu_unidades" action="action_ingredientes_unidad" parent="menu_configuracion"/>
 
         
 </data>
