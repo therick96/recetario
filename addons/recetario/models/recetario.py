@@ -12,6 +12,7 @@ class Recetas (models.Model): #Recetas
     _name = 'recetario.receta'
 
     name = fields.Char('Título')
+    imagen = fields.Binary('Imagen')
     preparacion = fields.Text('Procedimiento')
     autor_ids = fields.Many2many('recetario.autor', string="Autor")
     ingredientes_ids = fields.Many2many('recetario.ingredientes', string="Ingredientes")

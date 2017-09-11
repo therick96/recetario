@@ -11,11 +11,7 @@
                 <group string="Buscar" name="buscar">
                     <field name="busqueda" nolabel="1" colspan="2"/>  
                     <!--separator string="Recetas"/-->                 
-                    <field name="recetas_ids" nolabel="1" colspan="4">
-                        <kanban>
-                            
-                        </kanban>
-                    </field>                   
+                    <field name="recetas_ids" nolabel="1" colspan="4"/>              
                 </group>
             </form>
         </field>
@@ -25,6 +21,50 @@
         id="action_busqueda" 
         res_model="recetario.busqueda"
         view_mode="form" 
+    />
+
+
+    <record model="ir.ui.view" id="recetario_recetas_view_form">
+        <field name="name">recetario.receta.form</field>
+        <field name="model">recetario.receta</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <field name="name" nolabel="1" colspan="4"/>
+                    </div>
+
+                    <group col="4" colspan="2">
+                        <group>
+                            <field name="autor_ids" widget="many2many_tags"/>
+                        </group>
+                        <newline/>
+                        <group name="ingredientes" col="4">
+                            <group string="Ingredientes">
+                                <field name="ingredientes_ids" nolabel="1"/>
+                                <newline/>
+                                <separator string="Utencilios" />
+                                <newline/>
+                                <field name="utencilios_ids" nolabel="1"/>
+                            </group>
+                            <group>
+                                <field name="imagen" widget="image" nolabel="1" colspan="2" rowspan="3" width="200"/>
+                            </group>
+                        </group>
+                        <group string="Preparacion" colspan="4">
+                            <field name="preparacion" nolabel="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <act_window 
+        name="Recetas" 
+        id="action_receta" 
+        res_model="recetario.receta"
+        view_mode="tree,form" 
     />
 
 
@@ -54,6 +94,7 @@
 
     <menuitem name="Recetario" id="menu_recetario"/>
     <menuitem name="Buscar Recetas" id="menu_busqueda" action="action_busqueda" parent="menu_recetario"/>
+    <menuitem name="Recetas" id="menu_recetas" action="action_receta" parent="menu_recetario"/>
 
         
 </data>
