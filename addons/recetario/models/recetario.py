@@ -20,6 +20,10 @@ class Recetas (models.Model): #Recetas
     utencilios_ids = fields.Many2many('recetario.utencilios', string="Utencilios")
     tipo_ids = fields.Many2many('recetario.tipo_comida', string="Tipo de Receta")
 
+    tipo = fields.Char(related="tipo_ids.categoria", store=True)
+    estilo = fields.Char(related="tipo_ids.estilo", store=True)
+    autor = fields.Char(related="autor_ids.name", store=True)
+
     busqueda_id = fields.Many2one('recetario.busqueda')
 
 

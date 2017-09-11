@@ -81,6 +81,29 @@
         view_mode="tree,form" 
     />
 
+    <record model="ir.ui.view" id="recetario_receta_search_view">
+        <field name="name">recetario.receta.search</field>
+        <field name="model">recetario.receta</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="tipo"/>
+                <field name="estilo"/>
+                <field name="autor"/>
+
+                <filter name="name" string="Receta"/>
+                <filter name="tipo" string="Tipo de Receta"/>
+                <filter name="estilo" string="Estilo de Receta"/>
+                <filter name="autor" string="Autor"/>
+
+                <filter name="tipo" string="Tipos de Recetas" context="{'group_by' : 'tipo'}"/>
+                <filter name="estilo" string="Estilos de Recetas" context="{'group_by' : 'estilo'}"/>
+                <filter name="autor" string="Autores" context="{'group_by' : 'autor'}"/>
+            </search>
+        </field>
+    </record>
+
 
 <!--Vista de Autores-->
     <record model="ir.ui.view" id="recetario_autor_view_form">
