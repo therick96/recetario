@@ -10,6 +10,7 @@ class Busqueda (models.AbstractModel): #Para buscar recetas
 
 class Recetas (models.Model): #Recetas
     _name = 'recetario.receta'
+    _rec_name = 'name'
 
     name = fields.Char('Título')
     imagen = fields.Binary('Imagen')
@@ -24,6 +25,7 @@ class Recetas (models.Model): #Recetas
 
 class Autores (models.Model): #Autores de las recetas
     _name = 'recetario.autor'
+    _rec_name = 'name'
 
     name = fields.Char('Nombre')
     gender = fields.Selection([('M','M'),('F','F')], 'Género')
@@ -34,6 +36,7 @@ class Autores (models.Model): #Autores de las recetas
 
 class TipoComida (models.Model): #Tipos de Recetas
     _name = 'recetario.tipo_comida'
+    _rec_name = 'categoria'
 
     categoria = fields.Char('Categoria')
     estilo = fields.Char('Estilo')
@@ -42,6 +45,7 @@ class TipoComida (models.Model): #Tipos de Recetas
 
 class Ingredientes (models.Model): #Ingredientes para las recetas
     _name = 'recetario.ingredientes'
+    _rec_name = 'name'
 
     name = fields.Char('Nombre')
     tipo = fields.Char('Tipo')
@@ -50,6 +54,7 @@ class Ingredientes (models.Model): #Ingredientes para las recetas
 
 class Utencilio (models.Model): #Utencilios para las recetas
     _name = 'recetario.utencilios'
+    _rec_name = 'name'
 
     name = fields.Char('Nombre')
     tipo = fields.Char('Tipo')
@@ -59,6 +64,7 @@ class Utencilio (models.Model): #Utencilios para las recetas
 
 class Unidad (models.Model): #Unidades de medida
     _name = 'recetario.ingredientes.unidad'
+    _rec_name = 'medida'
 
     medida = fields.Char('Sistema de medida')
     descripcion = fields.Text('Descripción')
