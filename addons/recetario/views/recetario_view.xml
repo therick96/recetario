@@ -3,7 +3,7 @@
 <data>
 
 <!--Vista de Busquedas-->
-    <record model="ir.ui.view" id="busqueda_form_view">
+    <!--record model="ir.ui.view" id="busqueda_form_view">
         <field name="name">recetario.busqueda.form</field>
         <field name="model">recetario.busqueda</field>
         <field name="type">form</field>
@@ -11,7 +11,6 @@
             <form>
                 <group string="Buscar" name="buscar">
                     <field name="busqueda" nolabel="1" colspan="2"/>  
-                    <!--separator string="Recetas"/-->                 
                     <field name="recetas_ids" nolabel="1" colspan="4"/>              
                 </group>
             </form>
@@ -22,7 +21,7 @@
         id="action_busqueda" 
         res_model="recetario.busqueda"
         view_mode="form" 
-    />
+    /-->
 
 <!--Vista de Recetas-->
     <record model="ir.ui.view" id="recetario_recetas_view_form">
@@ -286,11 +285,12 @@
     </record-->
 
 
+<!--Menus-->
     <menuitem name="Recetario" id="menu_recetario"/>
-    <menuitem name="Buscar Recetas" id="menu_busqueda" action="action_busqueda" parent="menu_recetario"/>
+    <!--menuitem name="Buscar Recetas" id="menu_busqueda" action="action_busqueda" parent="menu_recetario"/-->
     <menuitem name="Recetas" id="menu_recetas" action="action_receta" parent="menu_recetario"/>
-    <menuitem name="Tipos de Comida" id="menu_tipo_comida" action="action_tipo_comida" parent="menu_recetario"/>
     <menuitem name="Autores" id="menu_autor" action="action_autor" parent="menu_recetario"/>
+    <menuitem name="Tipos de Comida" id="menu_tipo_comida" action="action_tipo_comida" parent="menu_recetario"/>
     <menuitem name="Configuracion" id="menu_configuracion" parent="menu_recetario"/>
         <menuitem name="Ingredientes" id="menu_ingredientes" action="action_ingredientes" parent="menu_configuracion"/>
         <menuitem name="Utencilios" id="menu_utencilios" action="action_utencilios" parent="menu_configuracion"/>
