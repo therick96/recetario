@@ -124,6 +124,74 @@
         res_model="recetario.autor"
         view_mode="tree,form" 
     />
+
+<!--Vista de Tipos de Comida-->
+    <record model="ir.ui.view" id="recetario_tipo_comida_view_form">
+        <field name="name">recetario.tipo_comida.form</field>
+        <field name="model">recetario.tipo_comida</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="4" colspan="2">
+                        <field name="categoria"/>
+                        <field name="estilo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="recetario_tipo_comida_tree_view">
+        <field name="name">recetario.tipo_comida.tree</field>
+        <field name="model">recetario.tipo_comida</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="categoria"/>
+                <field name="estilo"/>
+            </tree>
+        </field>
+    </record>
+    <act_window 
+        name="Tipos de Comida" 
+        id="action_tipo_comida" 
+        res_model="recetario.tipo_comida"
+        view_mode="tree,form" 
+    />
+
+<!--Vista de Ingredientes-->
+    <record model="ir.ui.view" id="recetario_ingredientes_view_form">
+        <field name="name">recetario.ingredientes.form</field>
+        <field name="model">recetario.ingredientes</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="4" colspan="2">
+                        <field name="name"/>
+                        <field name="tipo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="recetario_ingredientes_tree_view">
+        <field name="name">recetario.ingredientes.tree</field>
+        <field name="model">recetario.ingredientes</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tipo"/>
+            </tree>
+        </field>
+    </record>
+    <act_window 
+        name="Ingredientes" 
+        id="action_ingredientes" 
+        res_model="recetario.ingredientes"
+        view_mode="tree,form" 
+    />
     <!--record model="ir.ui.view" id="partner_tree_view_inherit">
         <field name="name">partner.tree.inherit</field>
         <field name="model">res.partner</field>
@@ -151,7 +219,9 @@
     <menuitem name="Recetario" id="menu_recetario"/>
     <menuitem name="Buscar Recetas" id="menu_busqueda" action="action_busqueda" parent="menu_recetario"/>
     <menuitem name="Recetas" id="menu_recetas" action="action_receta" parent="menu_recetario"/>
+    <menuitem name="Tipos de Comida" id="menu_tipo_comida" action="action_tipo_comida" parent="menu_recetario"/>
     <menuitem name="Autores" id="menu_autor" action="action_autor" parent="menu_recetario"/>
+    <menuitem name="Ingredientes" id="menu_ingredientes" action="action_ingredientes" parent="menu_recetario"/>
 
         
 </data>
